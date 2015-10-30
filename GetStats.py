@@ -1,4 +1,14 @@
 
+################################################
+# Usage: (on python3) 
+# python GetStats.py shares.txt 
+#
+#   shares.txt contains addresses of log files. 
+#   One log file per line. 
+#
+################################################
+
+
 import sys 
 import numpy as np
 
@@ -73,14 +83,16 @@ def process_1share(f_str):
 
 def process_shares(): 
     for share in g_shares: 
-        process_1share(share) 
+        if not share == "": 
+            process_1share(share) 
 
 
 def get_shares_list(): 
     global g_shares 
     with open(sys.argv[1]) as f:
         g_shares = f.readlines() 
-    g_shares = [x.strip() for x in g_shares] 
+    g_shares = [x.strip() for x in g_shares ] 
+
 
 def main(): 
     get_shares_list()
